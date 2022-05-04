@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function ShowUsers(props) {
 
-    const { userList, addUserHandler } = props;
+    const { userList, addUserHandler, deleteUserHandler } = props;
     const [show, setShow] = useState(false);
 
     return (
@@ -25,29 +25,35 @@ function ShowUsers(props) {
                 addUserHandler={addUserHandler}
             >
             </AddUser>
-            <div className='container-sm mt-5'>
-                <div className='row'>
-                    <div className=' text-center d-flex'>
-                        <div className='col-3'> <h5>Name</h5> </div>
-                        <div className='col-3'><h5>Email</h5></div>
-                        <div className='col-3'><h5>Phone</h5></div>
-                    </div>
+            <div className='container-sm px-md-5 mt-5'>
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                userList.map((el) => {
+                                    return <tr key={el.id}>
+                                        <td> <h6> {el.name}</h6></td>
+                                        <td> <h6> {el.email}</h6></td>
+                                        <td> <h6> {el.phone}</h6></td>
+                                        <td><div className='col-12'>
+                                            <Button variant="contained" size="small" color='warning' startIcon={<EditIcon fontSize='small' />} className='me-3'>Edit</Button>
+                                            <Button variant="contained" onClick={() => deleteUserHandler(el.id)} size="small" color="error" startIcon={<DeleteIcon fontSize='small' />}>Delete</Button>
+                                        </div></td>
+                                    </tr>
+                                })
+                            }
+
+                        </tbody>
+                    </table>
                 </div>
-                {
-                    userList.map((el) => {
-                        return <div key={el.id} className='row mt-4 '>
-                            <div className=' d-flex text-center shadow-sm rounded p-3 '>
-                                <div className='col-3 center'> <h6> {el.name}</h6></div>
-                                <div className='col-3 center'> <h6> {el.email}</h6></div>
-                                <div className='col-3 center'> <h6>{el.phone}</h6></div>
-                                <div className='col-3'>
-                                    <Button variant="contained" size="small" color='warning'startIcon={<EditIcon fontSize='small' />} className='me-3'>Edit</Button>
-                                    <Button variant="contained" size="small" color="error" startIcon={<DeleteIcon fontSize='small' />}>Delete</Button>
-                                </div>
-                            </div>
-                        </div>
-                    })
-                }
             </div>
         </div>
     )

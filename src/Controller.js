@@ -34,12 +34,17 @@ function Controller() {
         loadData()
        
     }
-
+    const deleteUserHandler = async (user) =>{
+        const response = await UserService.remove(user);
+        console.log(response);
+        loadData()
+       
+    }
     return (
         <div>
             <Router>
                 <Routes>
-                    <Route path='/' element={<ShowUsers userList={userList} addUserHandler={addUserHandler}/>}/>
+                    <Route path='/' element={<ShowUsers userList={userList} deleteUserHandler={deleteUserHandler} addUserHandler={addUserHandler}/>}/>
                     <Route path='/edit' element={<EditUser/>}/>
                 </Routes>
             </Router>
