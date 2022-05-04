@@ -48,13 +48,13 @@ function AddUser(props) {
                     <div className=" add-contact-container">
                         <div className='add-form-container'>
                             <div className="add-user-form px-md-5" >
-                                <div className="my-3">
+                                <div className="my-4">
                                     <TextField fullWidth label="Name" id="name" name="name" onChange={inputHandlerChange} />
                                 </div>
-                                <div className="my-3">
+                                <div className="my-4">
                                     <TextField fullWidth label="Email" type="email" id="email" name="email" onChange={inputHandlerChange} />
                                 </div>
-                                <div className="my-3">
+                                <div className="my-4">
                                     <TextField fullWidth label="Phone" id="phone" name="phone" onChange={inputHandlerChange} />
                                 </div>
                             </div>

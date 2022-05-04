@@ -5,6 +5,7 @@ import AddUser from '../adduser/AddUser';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 function ShowUsers(props) {
 
@@ -27,7 +28,7 @@ function ShowUsers(props) {
             </AddUser>
             <div className='container-sm px-md-5 mt-5'>
                 <div className="table-responsive">
-                    <table className="table">
+                    <table className="table text-center">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -44,7 +45,7 @@ function ShowUsers(props) {
                                         <td> <h6> {el.email}</h6></td>
                                         <td> <h6> {el.phone}</h6></td>
                                         <td><div className='col-12'>
-                                            <Button variant="contained" size="small" color='warning' startIcon={<EditIcon fontSize='small' />} className='me-3'>Edit</Button>
+                                        <Link to={'/edit/' + el.id}> <Button variant="contained" size="small" color='warning' startIcon={<EditIcon fontSize='small' />} className='me-3'>Edit</Button></Link>
                                             <Button variant="contained" onClick={() => deleteUserHandler(el.id)} size="small" color="error" startIcon={<DeleteIcon fontSize='small' />}>Delete</Button>
                                         </div></td>
                                     </tr>
