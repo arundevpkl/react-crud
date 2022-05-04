@@ -28,12 +28,18 @@ function Controller() {
      
     }, [])
 
+    const addUserHandler = async (user) =>{
+        const response = await UserService.create(user);
+        console.log(response);
+        loadData()
+       
+    }
 
     return (
         <div>
             <Router>
                 <Routes>
-                    <Route path='/' element={<ShowUsers userList={userList}/>}/>
+                    <Route path='/' element={<ShowUsers userList={userList} addUserHandler={addUserHandler}/>}/>
                     <Route path='/edit' element={<EditUser/>}/>
                 </Routes>
             </Router>
