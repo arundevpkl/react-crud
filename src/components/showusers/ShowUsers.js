@@ -1,26 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import Header from '../../common/header/Header'
 import '../showusers/ShowUsers.css'
-import UserService from '../../common/UserService';
-function ShowUsers() {
-    const [userList, setUserList] =useState([]);
-    
-  const loadData = () => {
-    UserService.getAll()
-      .then(response => {
-        setUserList(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
 
-  }
-  useEffect(() => {
-    loadData()
+function ShowUsers(props) {
    
-  }, [])
-
+    const {userList} = props;
 
     return (
         <div>
