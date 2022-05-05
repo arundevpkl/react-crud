@@ -10,6 +10,7 @@ import { styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 
 function EditUser(props) {
+  const {loadData} = props;
   const { id } = useParams();
   let navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function EditUser(props) {
   };
 
   useEffect(() => {
-    props.loadData()
+   
     if (id)
       getUser(id);
   }, [id]);
@@ -41,7 +42,7 @@ function EditUser(props) {
 
     const response = await UserService.update(userList.id, userList)
     console.log(response.data);
-    await props.loadData()
+    await loadData()
     await navigate('/')
 
 
@@ -73,7 +74,7 @@ function EditUser(props) {
                 <TextField
                   id="name"
                   name="name"
-                  value={userList.name}
+                  value={userList.name ?? ''}
                   onChange={handleInputChange}
                   variant="standard"
                   fullWidth
@@ -84,7 +85,7 @@ function EditUser(props) {
                 <TextField
                   id="email"
                   name="email"
-                  value={userList.email}
+                  value={userList.email ?? ''}
                   onChange={handleInputChange}
                   variant="standard"
                   fullWidth
@@ -95,7 +96,7 @@ function EditUser(props) {
                 <TextField
                   id="phone"
                   name="phone"
-                  value={userList.phone}
+                  value={userList.phone ?? ''}
                   onChange={handleInputChange}
                   variant="standard"
                   fullWidth
